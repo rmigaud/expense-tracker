@@ -1,0 +1,31 @@
+.expense-item {
+  width: 300px;
+  display: flexbox;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+  padding-top: 0.25rem;
+  border-radius: 12px;
+  background-color: #282828;
+
+  flex-direction: column;
+}
+
+.date {
+  font-size: 1rem;
+  border-radius: 12px;
+}
+.expense {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 12px;
+}
+.cost {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+}
