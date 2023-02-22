@@ -1,6 +1,6 @@
 import "./Expenses.css";
 import ExpenseItem from "./ExpenseItem";
-
+import Card from "./Card";
 const mockExpenses = [
   {
     date: new Date(2022, 11, 12),
@@ -73,7 +73,7 @@ const mockExpenses = [
 
 const Expenses = () => {
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {mockExpenses.map((item) => (
         <ExpenseItem
           key={item}
@@ -82,7 +82,7 @@ const Expenses = () => {
           cost={item.cost}
         />
       ))}
-    </div>
+    </Card>
   );
 };
 export default Expenses;
