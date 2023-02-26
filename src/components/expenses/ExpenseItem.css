@@ -17,7 +17,7 @@
   font-size: 1rem;
   border-radius: 12px;
 }
-.expense {
+.title {
   display: flex;
   gap: 1rem;
   align-items: center;
