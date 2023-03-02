@@ -36,7 +36,14 @@ const Expenses = () => {
       <Card className="expenses">
         {mockExpenses.map((item) => (
           <ExpenseItem
-            key={item}
+            key={
+              "" +
+              item +
+              item.date +
+              item.expense +
+              item.cost +
+              new Date().toLocaleString()
+            }
             date={item.date}
             expense={item.expense}
             cost={item.cost}

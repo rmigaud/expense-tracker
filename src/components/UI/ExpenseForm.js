@@ -20,32 +20,49 @@ const ExpenseForm = () => {
   };
 
   const submitExpenseHandler = (event) => {
-    console.log(title, date, cost);
+    event.preventDefault();
+    const newData = {
+      title: title,
+      date: date,
+      cost: cost,
+    };
+    console.log(newData);
+    setTitle("");
+    setDate("");
+    setCost("");
   };
 
   return (
-    <form className="expense-form">
+    <form className="expense-form" onSubmit={submitExpenseHandler}>
       <Card className="expense-input">
-        <label for="date">date:</label>
-        <input id="date" type="date" onChange={dateChangeHandler} />
+        <label htmlFor="date">date:</label>
+        <input
+          id="date"
+          type="date"
+          onChange={dateChangeHandler}
+          value={date}
+        />
       </Card>
       <Card className="expense-input">
-        <label for="title">title:</label>
-        <input id="title" onChange={titleChangeHandler} />
+        <label htmlFor="title">title:</label>
+        <input id="title" onChange={titleChangeHandler} value={title} />
       </Card>
       <Card className="expense-input">
-        <label for="cost">cost:</label>
+        <label htmlFor="cost">cost:</label>
         <input
           id="cost"
           type="number"
           min="0.01"
           step="0.01"
           onChange={costChangeHandler}
+          value={cost}
         />
       </Card>
       <div>
         <Card className="expense-input">
-          <button onClick={submitExpenseHandler}>Track Expense</button>
+          <button type="submit" onClick={submitExpenseHandler}>
+            Track Expense
+          </button>
         </Card>
       </div>
     </form>
