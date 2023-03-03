@@ -2,6 +2,8 @@ import "./Expenses.css";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpenseForm from "../UI/ExpenseForm";
+import ExpensesFilter from "./ExpensesFilter";
+import { useState } from "react";
 
 let mockExpenses = [
   {
@@ -33,6 +35,7 @@ let mockExpenses = [
 ];
 
 const Expenses = () => {
+  const [filterYear, setFilterYear] = useState("2019");
   const onSaveExpenseDataHandler = (expenseData) => {
     const newExpenseData = { ...expenseData };
     mockExpenses = [
@@ -42,10 +45,21 @@ const Expenses = () => {
     console.log(mockExpenses);
   };
 
+  const changeFilterHandler = (event) => {
+    console.log(event.target.value);
+    setFilterYear(event.target.value);
+  };
+
   return (
     <div>
       <Card className="expenses">
         <ExpenseForm onSaveExpenseData={onSaveExpenseDataHandler} />
+      </Card>
+      <Card className="expenses">
+        <ExpensesFilter
+          year={filterYear}
+          onChangeFilter={changeFilterHandler}
+        />
       </Card>
       <Card className="expenses">
         {mockExpenses.map((item) => (
