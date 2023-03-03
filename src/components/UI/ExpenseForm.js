@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 import Card from "./Card";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [cost, setCost] = useState("");
@@ -26,7 +26,8 @@ const ExpenseForm = () => {
       date: date,
       cost: cost,
     };
-    console.log(newData);
+    props.onSaveExpenseData(newData);
+
     setTitle("");
     setDate("");
     setCost("");
@@ -60,9 +61,7 @@ const ExpenseForm = () => {
       </Card>
       <div>
         <Card className="expense-input">
-          <button type="submit" onClick={submitExpenseHandler}>
-            Track Expense
-          </button>
+          <button type="submit">Track Expense</button>
         </Card>
       </div>
     </form>
