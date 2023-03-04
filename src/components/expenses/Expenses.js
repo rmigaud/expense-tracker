@@ -36,13 +36,18 @@ let mockExpenses = [
 
 const Expenses = () => {
   const [filterYear, setFilterYear] = useState("2019");
+  const [expenses, setExpenses] = useState(mockExpenses);
   const onSaveExpenseDataHandler = (expenseData) => {
     const newExpenseData = { ...expenseData };
     mockExpenses = [
       ...mockExpenses,
       { ...newExpenseData, id: Math.random().toString() },
     ];
-    console.log(mockExpenses);
+    // console.log(mockExpenses);
+    setExpenses((expenses) => {
+      return [...expenses, { ...expenseData, id: Math.random().toString() }];
+    });
+    console.log(expenses);
   };
 
   const changeFilterHandler = (event) => {
