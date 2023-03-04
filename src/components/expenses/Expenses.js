@@ -8,7 +8,7 @@ import { useState } from "react";
 let mockExpenses = [
   {
     id: 0,
-    date: new Date(2022, 11, 12),
+    date: new Date(2021, 11, 12),
     expense: "School tuition",
     cost: "$19,000",
   },
@@ -16,13 +16,13 @@ let mockExpenses = [
   { id: 2, date: new Date(2022, 11, 12), expense: "Groceries", cost: "$200" },
   {
     id: 3,
-    date: new Date(2022, 11, 12),
+    date: new Date(2019, 11, 12),
     expense: "Movie Subscription",
     cost: "$80",
   },
   {
     id: 4,
-    date: new Date(2022, 11, 12),
+    date: new Date(2020, 11, 12),
     expense: "Movie Subscription",
     cost: "$80",
   },
@@ -35,19 +35,12 @@ let mockExpenses = [
 ];
 
 const Expenses = () => {
-  const [filterYear, setFilterYear] = useState("2019");
+  const [filterYear, setFilterYear] = useState("2022");
   const [expenses, setExpenses] = useState(mockExpenses);
   const onSaveExpenseDataHandler = (expenseData) => {
-    const newExpenseData = { ...expenseData };
-    mockExpenses = [
-      ...mockExpenses,
-      { ...newExpenseData, id: Math.random().toString() },
-    ];
-    // console.log(mockExpenses);
     setExpenses((expenses) => {
       return [...expenses, { ...expenseData, id: Math.random().toString() }];
     });
-    console.log(expenses);
   };
 
   const changeFilterHandler = (event) => {
@@ -67,9 +60,9 @@ const Expenses = () => {
         />
       </Card>
       <Card className="expenses">
-        {mockExpenses.map((item) => (
+        {expenses.map((item) => (
           <ExpenseItem
-            key={"" + item.id}
+            key={item.id}
             date={item.date}
             expense={item.expense}
             cost={item.cost}

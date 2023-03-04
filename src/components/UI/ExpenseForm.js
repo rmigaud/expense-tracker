@@ -22,9 +22,9 @@ const ExpenseForm = (props) => {
   const submitExpenseHandler = (event) => {
     event.preventDefault();
     const newData = {
-      title: title,
+      expense: title,
       date: new Date(date),
-      cost: cost,
+      cost: "$" + cost,
     };
     props.onSaveExpenseData(newData);
 
