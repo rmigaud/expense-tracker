@@ -17,20 +17,20 @@ let mockExpenses = [
   {
     id: 3,
     date: new Date(2019, 11, 12),
-    expense: "Movie Subscription",
-    cost: "$80",
+    expense: "Streaming Subscription",
+    cost: "$20",
   },
   {
     id: 4,
     date: new Date(2020, 11, 12),
-    expense: "Movie Subscription",
-    cost: "$80",
+    expense: "Music Subscription",
+    cost: "$10",
   },
   {
     id: 5,
     date: new Date(2022, 11, 12),
     expense: "Movie Subscription",
-    cost: "$80",
+    cost: "$20",
   },
 ];
 
@@ -44,9 +44,12 @@ const Expenses = () => {
   };
 
   const changeFilterHandler = (event) => {
-    console.log(event.target.value);
     setFilterYear(event.target.value);
   };
+
+  const filteredExpenses = expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === filterYear;
+  });
 
   return (
     <div>
@@ -60,7 +63,7 @@ const Expenses = () => {
         />
       </Card>
       <Card className="expenses">
-        {expenses.map((item) => (
+        {filteredExpenses.map((item) => (
           <ExpenseItem
             key={item.id}
             date={item.date}
