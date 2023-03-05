@@ -63,14 +63,18 @@ const Expenses = () => {
         />
       </Card>
       <Card className="expenses">
-        {filteredExpenses.map((item) => (
-          <ExpenseItem
-            key={item.id}
-            date={item.date}
-            expense={item.expense}
-            cost={item.cost}
-          />
-        ))}
+        {filteredExpenses.length === 0 ? (
+          <Card className="expenses"> No Expenses for the current year.</Card>
+        ) : (
+          filteredExpenses.map((item) => (
+            <ExpenseItem
+              key={item.id}
+              date={item.date}
+              expense={item.expense}
+              cost={item.cost}
+            />
+          ))
+        )}
       </Card>
     </div>
   );
