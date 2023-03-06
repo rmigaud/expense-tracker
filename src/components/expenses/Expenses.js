@@ -1,5 +1,5 @@
 import "./Expenses.css";
-import ExpenseItem from "./ExpenseItem";
+import ExpensesList from "./ExpensesList";
 import Card from "../UI/Card";
 import ExpenseForm from "../UI/ExpenseForm";
 import ExpensesFilter from "./ExpensesFilter";
@@ -62,20 +62,7 @@ const Expenses = () => {
           onChangeFilter={changeFilterHandler}
         />
       </Card>
-      <Card className="expenses">
-        {filteredExpenses.length === 0 ? (
-          <Card className="expenses"> No Expenses for the current year.</Card>
-        ) : (
-          filteredExpenses.map((item) => (
-            <ExpenseItem
-              key={item.id}
-              date={item.date}
-              expense={item.expense}
-              cost={item.cost}
-            />
-          ))
-        )}
-      </Card>
+      <ExpensesList items={filteredExpenses} />
     </div>
   );
 };
