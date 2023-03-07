@@ -75,7 +75,6 @@ const Expenses = () => {
     let filteredCost = expense.date.getFullYear().toString() === filterYear;
     if (expense.date.getFullYear().toString() === filterYear) {
       chartData[expense.date.getMonth()]["cost"] += expense.cost;
-      // console.log(chartData[expense.date.getMonth()]);
     }
     return filteredCost;
   });

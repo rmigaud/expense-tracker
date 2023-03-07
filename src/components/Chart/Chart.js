@@ -3,11 +3,10 @@ import "./Chart.css";
 const Chart = (props) => {
   const max = Math.max(
     ...props.dataPoints.map((dataPoint) => {
-      console.log("dataPoint:", dataPoint.cost);
       return dataPoint.cost;
     })
   );
-  console.log("max:", max);
+  console.log("ChartBar:max=", max);
 
   return (
     <div className="chart">
@@ -15,7 +14,7 @@ const Chart = (props) => {
         <ChartBar
           key={Math.random()}
           maxValue={max}
-          value={dataPoint.value}
+          cost={dataPoint.cost}
           label={dataPoint.label}
         />
       ))}
