@@ -37,6 +37,13 @@ let mockExpenses = [
 const Expenses = () => {
   const [filterYear, setFilterYear] = useState("2022");
   const [expenses, setExpenses] = useState(mockExpenses);
+  const [isEditing, setIsEditing] = useState(false);
+  const startEditingHandler = () => {
+    setIsEditing(true);
+  };
+  const stopEditingHandler = () => {
+    setIsEditing(false);
+  };
   const onSaveExpenseDataHandler = (expenseData) => {
     setExpenses((expenses) => {
       return [...expenses, { ...expenseData, id: Math.random().toString() }];
@@ -54,7 +61,18 @@ const Expenses = () => {
   return (
     <div>
       <Card className="expenses">
-        <ExpenseForm onSaveExpenseData={onSaveExpenseDataHandler} />
+        {!isEditing ? (
+          <button type="button" onClick={startEditingHandler}>
+            Add an Expense
+          </button>
+        ) : (
+          <div>
+            <button type="button" onClick={stopEditingHandler}>
+              Cancel
+            </button>
+            <ExpenseForm onSaveExpenseData={onSaveExpenseDataHandler} />
+          </div>
+        )}
       </Card>
       <Card className="expenses">
         <ExpensesFilter
