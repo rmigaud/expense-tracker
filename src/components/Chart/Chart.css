@@ -1,11 +1,13 @@
 .chart {
   padding: 1rem;
+  width: 280px;
   border-radius: 12px;
   background-color: #313131;
   text-align: center;
   display: flex;
   justify-content: space-around;
   height: 5rem;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 25%);
 }
 
 .bar {
@@ -13,6 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0.25rem;
 }
 .bar-inner {
   height: 100%;
